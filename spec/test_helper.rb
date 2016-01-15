@@ -1,8 +1,8 @@
 # Configure Rails Environment
 ENV["RAILS_ENV"] = "test"
 
-require File.expand_path("../../test/dummy/config/environment.rb",  __FILE__)
-ActiveRecord::Migrator.migrations_paths = [File.expand_path("../../test/dummy/db/migrate", __FILE__)]
+require File.expand_path("../../spec/dummy/config/environment.rb",  __FILE__)
+ActiveRecord::Migrator.migrations_paths = [File.expand_path("../../spec/dummy/db/migrate", __FILE__)]
 require "rails/test_help"
 
 # Filter out Minitest backtrace while allowing backtrace from other libraries
@@ -18,3 +18,5 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
   ActionDispatch::IntegrationTest.fixture_path = ActiveSupport::TestCase.fixture_path
   ActiveSupport::TestCase.fixtures :all
 end
+
+require 'minitest/spec'
