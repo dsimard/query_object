@@ -20,3 +20,22 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
 end
 
 require 'minitest/spec'
+
+FactoryGirl.definition_file_paths = %w(spec/factories)
+FactoryGirl.find_definitions
+
+class MiniTest::Spec
+  include FactoryGirl::Syntax::Methods
+end
+
+DatabaseCleaner.strategy = :transaction
+
+class Minitest::Spec
+  before :each do
+    DatabaseCleaner.start
+  end
+
+  after :each do
+    DatabaseCleaner.clean
+  end
+end

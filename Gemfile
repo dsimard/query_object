@@ -17,3 +17,8 @@ group :development do
   gem 'guard'
   gem 'guard-minitest'
 end
+
+group :test do
+  gem 'factory_girl'
+  gem 'database_cleaner'
+end

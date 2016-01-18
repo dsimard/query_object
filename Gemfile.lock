@@ -46,7 +46,10 @@ GEM
     builder (3.2.2)
     coderay (1.1.0)
     concurrent-ruby (1.0.0)
+    database_cleaner (1.2.0)
     erubis (2.7.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
     ffi (1.9.10)
     formatador (0.2.5)
     globalid (0.3.6)
@@ -138,6 +141,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  database_cleaner
+  factory_girl
   guard
   guard-minitest
   query_object!
