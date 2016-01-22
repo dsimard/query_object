@@ -4,6 +4,6 @@
 
 Include the gem in your Gemfile:
 
-`gem "attr_object"`
+`gem "query_object"`
 
 This project uses MIT-LICENSE.
