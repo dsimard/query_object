@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.queries.old
+    @users = User.old
+    @query_users = User.queries.old
   end
 
   # GET /users/1
