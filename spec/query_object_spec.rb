@@ -7,7 +7,7 @@ class UsersControllerTest < ActionController::TestCase
     end
   end
 
-  test "should" do
+  test "should return different count when using `queries`" do
     get :index
     users = assigns :users
     q_users = assigns :query_users
@@ -17,8 +17,13 @@ class UsersControllerTest < ActionController::TestCase
   end
 end
 
+require 'request_store'
 describe QueryObject do
   before(:each) do
+    # Force a context
+    RequestStore.store[:query_object_controller_class_name] = "UsersController"
+    RequestStore.store[:query_object_action_name] = "index"
+
     40.times do |i|
       FactoryGirl.create :user, born_on: i.years.ago
     end
