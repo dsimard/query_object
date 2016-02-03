@@ -43,6 +43,7 @@ describe QueryObject do
 
     it "should return gender f only" do
       query.count.must_equal 20
+      query.pluck(:gender).uniq.must_equal [User.genders[:f]]
     end
   end
 
@@ -58,6 +59,15 @@ describe QueryObject do
     it "should change filter" do
       User.old.count.must_equal 25
       query.old.count.must_equal 15
+    end
+  end
+
+  describe "with `male` scope defined on the whole controller" do
+    before(:each) {force_context "UsersController", "without_action_scope"}
+
+    it "should return male only" do
+      query.male.count.must_equal 20
+      query.male.pluck(:gender).uniq.must_equal [User.genders[:m]]
     end
   end
 end
