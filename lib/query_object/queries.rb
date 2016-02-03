@@ -1,7 +1,5 @@
 # Base object to every query_object. It defines additional scopes on models.
 class QueryObject::Queries
-  attr_reader :default_scopes
-
   class << self
     def scope(name, body, &block)
       @scopes ||= []
@@ -10,6 +8,15 @@ class QueryObject::Queries
 
     def scopes
       @scopes || []
+    end
+
+    def default_scope(scope)
+      @default_scopes ||= []
+      @default_scopes << scope
+    end
+
+    def default_scopes
+      @default_scopes || []
     end
   end
 
@@ -27,5 +34,9 @@ class QueryObject::Queries
 
   def default_scope(scope)
     @default_scopes << scope
+  end
+
+  def default_scopes
+    @default_scopes + self.class.default_scopes
   end
 end

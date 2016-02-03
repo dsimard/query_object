@@ -65,9 +65,17 @@ describe QueryObject do
   describe "with `male` scope defined on the whole controller" do
     before(:each) {force_context "UsersController", "without_action_scope"}
 
-    it "should return male only" do
-      query.male.count.must_equal 20
-      query.male.pluck(:gender).uniq.must_equal [User.genders[:m]]
+    describe "with `male` scope defined on the whole controller" do
+      it "should return male only" do
+        query.male.count.must_equal 20
+        query.male.pluck(:gender).uniq.must_equal [User.genders[:m]]
+      end
+    end
+
+    describe "with default_scope on whole controller" do
+      it "should contain the useless condition" do
+        query.all.to_sql.must_include "(90210 = 90210)"
+      end
     end
   end
 end

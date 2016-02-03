@@ -1,5 +1,6 @@
 class UsersQueries < QueryObject::Queries
   scope :male, ->{where(gender: User.genders[:m])}
+  default_scope ->{where("90210 = 90210")} # Scope that doesn't have effect on the tests
 
   def index
     default_scope ->{where(gender: User.genders[:f])}
