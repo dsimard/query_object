@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+  - 2.0.0
+env:
+  - "RAILS_VERSION=4.0.0"
+  - "RAILS_VERSION=4.2.5"
+  - "RAILS_VERSION=master"
+#addons:
+    #code_climate:
+        #repo_token: b416c6c8c8ce2700e258c6392c428f156a8f9625fa229d954942c9d16396caef
